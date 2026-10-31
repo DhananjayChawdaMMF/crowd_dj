@@ -1,0 +1,4 @@
+{
+  "SUPABASE_URL": "https://<your-prod-project-ref>.supabase.co",
+  "SUPABASE_PUBLISHABLE_KEY": "<sb_publishable_... of the PRODUCTION project>"
+}

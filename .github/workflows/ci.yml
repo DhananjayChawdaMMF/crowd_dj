@@ -1,0 +1,39 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  flutter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - name: Hosting config is up to date
+        run: |
+          python3 tool/hosting.py
+          git diff --exit-code -- firebase.json vercel.json netlify.toml docs/deploy/nginx.conf
+      - run: flutter analyze
+      - run: flutter test
+      # Build with a dummy public config to prove the web build compiles.
+      - run: |
+          cat > env/ci.json <<'JSON'
+          {"SUPABASE_URL":"https://example.supabase.co","SUPABASE_PUBLISHABLE_KEY":"sb_publishable_ci"}
+          JSON
+          tool/build_web.sh env/ci.json
+
+  database:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PostgreSQL
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql postgresql-contrib
+      - name: Migrations + security suite
+        run: supabase/tests/run_local.sh

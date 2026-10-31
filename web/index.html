@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Replaced by `flutter build web --base-href`; keep as is. -->
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <!-- No viewport meta: Flutter Web injects its own and warns about duplicates. -->
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <title>CrowdDJ – Your Music. Your Crowd. Your Vibe.</title>
+  <meta name="description" content="Create a room, invite your friends, and let everyone recommend what plays next.">
+  <meta name="theme-color" content="#0B0B12">
+  <meta name="color-scheme" content="dark">
+  <!-- Rooms are private by link; keep them out of search results (see robots.txt). -->
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CrowdDJ">
+  <meta property="og:title" content="CrowdDJ – Your Music. Your Crowd. Your Vibe.">
+  <meta property="og:description" content="Create a room, invite your friends, and let everyone recommend what plays next.">
+  <meta name="twitter:card" content="summary">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CrowdDJ">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    html, body { margin: 0; height: 100%; background: #0B0B12; }
+    /* Shown while the Flutter engine downloads; removed on the first frame. */
+    #splash {
+      position: fixed; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 20px;
+      background: #0B0B12; color: #fff;
+      font: 700 22px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+      letter-spacing: -0.5px;
+    }
+    #splash .mark {
+      width: 56px; height: 56px; border-radius: 16px;
+      background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+      display: flex; align-items: center; justify-content: center; gap: 4px;
+    }
+    #splash .mark i {
+      display: block; width: 5px; border-radius: 3px; background: #fff;
+      animation: eq 1s ease-in-out infinite;
+    }
+    #splash .mark i:nth-child(1) { height: 14px; animation-delay: -0.4s; }
+    #splash .mark i:nth-child(2) { height: 26px; animation-delay: -0.2s; }
+    #splash .mark i:nth-child(3) { height: 20px; }
+    #splash .mark i:nth-child(4) { height: 28px; animation-delay: -0.6s; }
+    #splash .mark i:nth-child(5) { height: 16px; animation-delay: -0.3s; }
+    @keyframes eq { 0%, 100% { transform: scaleY(0.55); } 50% { transform: scaleY(1); } }
+    @media (prefers-reduced-motion: reduce) { #splash .mark i { animation: none; } }
+  </style>
+</head>
+<body>
+  <div id="splash" role="status" aria-label="Loading CrowdDJ">
+    <div class="mark"><i></i><i></i><i></i><i></i><i></i></div>
+    CrowdDJ
+  </div>
+  <noscript>CrowdDJ needs JavaScript to run.</noscript>
+  <script src="splash.js"></script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

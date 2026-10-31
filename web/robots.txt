@@ -1,0 +1,5 @@
+# Rooms are private by link: keep them out of search engines.
+User-agent: *
+Disallow: /room/
+Disallow: /create-room
+Allow: /
